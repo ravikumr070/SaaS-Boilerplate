@@ -1,7 +1,7 @@
 ﻿using Application.LogException;
 using Domain.LogException;
 
-namespace Host.Controllers.LogException;
+namespace Controllers.LogException;
 
 public class LogExceptionController:VersionedApiController
 {

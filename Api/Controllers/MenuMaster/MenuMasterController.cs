@@ -1,7 +1,7 @@
 ﻿using Application.MenuMaster;
 using Domain.MenuMaster;
 
-namespace Host.Controllers.MenuMaster;
+namespace Controllers.MenuMaster;
 
 public class MenuMasterController:VersionedApiController
 {

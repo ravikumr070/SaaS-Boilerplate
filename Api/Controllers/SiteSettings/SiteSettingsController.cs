@@ -1,7 +1,7 @@
 ﻿using Application.SiteSettings;
 using Domain.SiteSettings;
 
-namespace Host.Controllers.SiteSettings;
+namespace Controllers.SiteSettings;
 
 public class SiteSettingsController:VersionedApiController
 {

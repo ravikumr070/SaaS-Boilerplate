@@ -1,4 +1,4 @@
-﻿namespace Host.Controllers;
+﻿namespace Controllers;
 
 [Route("api/[controller]")]
 [ApiVersionNeutral]

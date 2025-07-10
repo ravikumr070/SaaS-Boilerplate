@@ -1,7 +1,7 @@
 using Api.Controllers;
 using Application.Identity.Tokens;
 
-namespace Host.Controllers.Identity;
+namespace Controllers.Identity;
 
 public sealed class TokensController : VersionNeutralApiController
 {

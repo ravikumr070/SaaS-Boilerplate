@@ -1,12 +1,12 @@
 using Api.Controllers;
 using Application.Multitenancy;
 
-namespace Host.Controllers.Multitenancy;
+namespace Controllers.Multitenancy;
 
 public class TenantsController : VersionNeutralApiController
 {
     [HttpGet]
-    [MustHavePermission(UserAction.View, UserResource.Tenants)]
+  //  [MustHavePermission(UserAction.View, UserResource.Tenants)]
     [OpenApiOperation("Get a list of all tenants.", "")]
     public Task<List<TenantDto>> GetListAsync()
     {

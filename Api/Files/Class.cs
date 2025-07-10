@@ -1,4 +1,4 @@
-﻿namespace Host.Files;
+﻿namespace Files;
 
 public class Class
 {

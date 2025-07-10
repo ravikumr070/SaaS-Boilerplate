@@ -7,7 +7,7 @@ using Application.LoginAttempt;
 using Application.MenuMaster;
 using Domain.MenuMaster;
 
-namespace Host.Controllers.Identity;
+namespace Controllers.Identity;
 
 public class PersonalController : VersionNeutralApiController
 {

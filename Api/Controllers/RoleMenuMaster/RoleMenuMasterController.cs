@@ -1,7 +1,7 @@
 ﻿using Application.RoleMenuMaster;
 using Domain.RoleMenuMaster;
 
-namespace Host.Controllers.RoleMenuMaster;
+namespace Controllers.RoleMenuMaster;
 
 public class RoleMenuMasterController:VersionedApiController
 {

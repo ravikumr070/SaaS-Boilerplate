@@ -1,7 +1,7 @@
 ﻿using Application.EmailSend;
 using Domain.EmailSend;
 
-namespace Host.Controllers.EmailSend;
+namespace Controllers.EmailSend;
 
 public class EmailSendController:VersionedApiController
 {

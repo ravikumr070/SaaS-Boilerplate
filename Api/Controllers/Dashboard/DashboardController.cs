@@ -1,8 +1,9 @@
 using Application.Dashboard;
+
 using Infrastructure.Auth.Permissions;
 using NSwag.Annotations;
 
-namespace Host.Controllers.Dashboard;
+namespace Controllers.Dashboard;
 
 public class DashboardController : VersionedApiController
 {

@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace Host.Controllers;
+namespace Controllers;
 
 [ApiController]
 public class BaseApiController : ControllerBase

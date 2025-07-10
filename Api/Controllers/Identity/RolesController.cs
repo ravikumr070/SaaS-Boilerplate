@@ -1,6 +1,6 @@
 using Application.Identity.Roles;
 
-namespace Host.Controllers.Identity;
+namespace Controllers.Identity;
 
 public class RolesController : VersionNeutralApiController
 {

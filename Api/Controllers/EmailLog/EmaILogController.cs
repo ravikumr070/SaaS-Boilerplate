@@ -1,7 +1,7 @@
 ﻿using Application.EmailLog;
 using Domain.EmailLog;
 
-namespace Host.Controllers.EmailLog;
+namespace Controllers.EmailLog;
 
 public class EmaILogController:VersionedApiController
 {

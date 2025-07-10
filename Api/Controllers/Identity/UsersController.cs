@@ -3,7 +3,7 @@ using Application.Identity.Users;
 using Application.Identity.Users.Password;
 using Application.LoginAttempt;
 
-namespace Host.Controllers.Identity;
+namespace Controllers.Identity;
 
 public class UsersController : VersionNeutralApiController
 {

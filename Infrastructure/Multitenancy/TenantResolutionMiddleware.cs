@@ -1,29 +1,26 @@
-﻿using Application.Common.Persistence;
+﻿
+using Application.Common.Persistence;
 using Application.Multitenancy;
 using Domain.MasterTenant;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
 using Shared.Multitenancy;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Multitenancy
 {
     public class TenantResolutionMiddleware
     {
         private readonly RequestDelegate _next;
-        private readonly ITenantService _tenantService;
-
-        public TenantResolutionMiddleware(RequestDelegate next, ITenantService tenantService)
+        public TenantResolutionMiddleware(RequestDelegate next)
         {
             _next = next;
-            _tenantService = tenantService;
         }
 
-        public async Task InvokeAsync(HttpContext context, ITenantProvider tenantProvider)
+        public async Task InvokeAsync(HttpContext context)
         {
+            var tenantService = context.RequestServices.GetRequiredService<ITenantService>();
+            var tenantProvider = context.RequestServices.GetRequiredService<ITenantProvider>();
+
             string? tenantKey = MultitenancyConstants.TenantIdName;
             string? tenantId = context.Request.Headers[tenantKey].FirstOrDefault()
                                ?? context.Request.Query[tenantKey].FirstOrDefault()
@@ -33,7 +30,7 @@ namespace Infrastructure.Multitenancy
             {
                 try
                 {
-                    var tenantInfo = await _tenantService.GetByIdAsync(tenantId);
+                    var tenantInfo = await tenantService.GetByIdAsync(tenantKey);
 
                     var tenant = new Tenant
                     {
