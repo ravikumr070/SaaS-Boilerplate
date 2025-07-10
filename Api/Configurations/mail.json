@@ -1,0 +1,10 @@
+{
+  "MailSettings": {
+    "DisplayName": "SaaS-Boilerplate",
+    "From": "noreply@saas.com",
+    "Host": "smtp.office365.com",
+    "Password": "Yuna49261",
+    "Port": 587,
+    "UserName": "noreply@saas.com"
+  }
+}

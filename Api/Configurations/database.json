@@ -1,0 +1,16 @@
+{
+  "DatabaseSettings": {
+    "DBProvider": "mssql",
+    //"ConnectionString": "Data Source=.\\SQL2019;initial catalog=CloudfyAPIDatabase1;persist security info=True;user id=WebUser;password=Web_2019;multipleactiveresultsets=True;",
+    "ConnectionString": "Data Source=WCL-INDIA-WIN11\\SQLEXPRESS;Initial Catalog=RavTest;Integrated Security=True;MultipleActiveResultSets=True;TrustServerCertificate=True;"
+    //"ConnectionString": "Data Source=52.166.182.90\\SQL2019,1433;initial catalog=CloudfyAPIDatabase1;persist security info=True;user id=WebUser;password=Web_2019;multipleactiveresultsets=True;"
+  },
+  "AzureDatabaseSettings": {
+    "DBProvider": "mssql",
+    "ConnectionString": "Data Source=WCL-INDIA-WIN11\\SQLEXPRESS;Initial Catalog=RavTest;Integrated Security=True;MultipleActiveResultSets=True;",
+    "ElasticPoolName": "Your_Elastic_Pool_Name",
+    "ResourceGroupName": "Your_Resource_Name",
+    "SqlServerName": "Your_SqlServer_Name",
+    "SubscriptionId": "Your_Azure_Subscription_Name"
+  }
+}

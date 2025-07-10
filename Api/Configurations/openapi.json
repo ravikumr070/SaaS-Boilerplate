@@ -1,0 +1,14 @@
+{
+  "SwaggerSettings": {
+    "Enable": true,
+    "Title": "SaaS Boilerplate API",
+    "Version": "v1",
+    "Description": "SaaS Boilerplate API",
+    "ContactName": "SaaS Boilerplate",
+    "ContactEmail": "saasboilerplate@text.com",
+    "ContactUrl": "",
+    "License": true,
+    "LicenseName": "MIT License",
+    "LicenseUrl": ""
+  }
+}
