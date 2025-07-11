@@ -15,6 +15,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Infrastructure.Persistence.Context.Factories
 {
@@ -88,7 +89,7 @@ namespace Infrastructure.Persistence.Context.Factories
         {
             public string Serialize<T>(T obj) => "{}";
 
-            public T Deserialize<T>(string text) => Activator.CreateInstance<T>();
+            public T Deserialize<T>(string text) => JsonConvert.DeserializeObject<T>(text);
 
             public string Serialize<T>(T obj, Type type) => "{}";
         }

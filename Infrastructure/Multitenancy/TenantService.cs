@@ -137,8 +137,19 @@ internal class TenantService : ITenantService
         await _tenantDbContext.SaveChangesAsync();
         return _t[$"Tenant {0}'s Subscription Upgraded. Now Valid till {1}.", id, tenant.ValidUpto];
     }
-    private async Task<Tenant> GetTenantInfoAsync(string id) =>
-        await _tenantDbContext.Tenants
-            .FirstOrDefaultAsync(t => t.Id == id)
-        ?? throw new NotFoundException(_t["{0} {1} Not Found.", nameof(Tenant), id]);
+    //private async Task<Tenant> GetTenantInfoAsync(string id) =>
+    //    await _tenantDbContext.Tenants
+    //        .FirstOrDefaultAsync(t => t.Id == id)
+    //    ?? throw new NotFoundException(_t["{0} {1} Not Found.", nameof(Tenant), id]);
+    private async Task<Tenant> GetTenantInfoAsync(string id)
+    {
+        var tenant = await _tenantDbContext.Tenants.FirstOrDefaultAsync(t => t.Id == id);
+        if (tenant is null)
+        {
+            var message = _t[$"{nameof(Tenant)} {id} Not Found."];
+            throw new NotFoundException(message);
+        }
+
+        return tenant;
+    }
 }

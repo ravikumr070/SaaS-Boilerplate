@@ -24,13 +24,14 @@ namespace Infrastructure.Multitenancy
             string? tenantKey = MultitenancyConstants.TenantIdName;
             string? tenantId = context.Request.Headers[tenantKey].FirstOrDefault()
                                ?? context.Request.Query[tenantKey].FirstOrDefault()
+                               ?? context.User?.FindFirst("tenant")?.Value
                                ?? context.Request.Host.Host.Split('.').FirstOrDefault();
 
             if (!string.IsNullOrWhiteSpace(tenantId))
             {
                 try
                 {
-                    var tenantInfo = await tenantService.GetByIdAsync(tenantKey);
+                    var tenantInfo = await tenantService.GetByIdAsync(tenantId);
 
                     var tenant = new Tenant
                     {

@@ -3,7 +3,7 @@
     "Provider": "Jwt",
     "RequireConfirmedAccount":true,
     "JwtSettings": {
-      "key": "SAASBOILERPLATE!12!RAV!!!",
+      "key": "SAASBOILERPLATE!12!RAV!!!SECUREKEY256",
       "tokenExpirationInMinutes": 60,
       "refreshTokenExpirationInDays": 7
     },
