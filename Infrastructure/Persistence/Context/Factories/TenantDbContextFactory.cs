@@ -1,6 +1,8 @@
-﻿using Infrastructure.Multitenancy;
+﻿using System.Data.Entity;
+using Infrastructure.Multitenancy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Configuration;
 
 namespace Infrastructure.Persistence.Context.Factories
 {
@@ -8,16 +10,14 @@ namespace Infrastructure.Persistence.Context.Factories
     {
         public TenantDbContext CreateDbContext(string[] args)
         {
+            var configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("Configurations/database.json", optional: false, reloadOnChange: true)
+                .Build();
+            var dbSettings = new DatabaseSettings();
+            configuration.GetSection("DatabaseSettings").Bind(dbSettings);
             var optionsBuilder = new DbContextOptionsBuilder<TenantDbContext>();
-
-            // Use a placeholder or valid connection string for design-time
-            var connectionString = "Data Source=WCL-INDIA-WIN11\\SQLEXPRESS;Initial Catalog=RavTest;Integrated Security=True;MultipleActiveResultSets=True;TrustServerCertificate=True;";
-            optionsBuilder.UseSqlServer(connectionString);
-            //optionsBuilder.UseSqlServer(connectionString, b =>
-            //{
-            //    b.MigrationsAssembly("Migrators.MSSQL");
-            //});
-
+            optionsBuilder.UseSqlServer(dbSettings.ConnectionString);
             return new TenantDbContext(optionsBuilder.Options);
         }
     }

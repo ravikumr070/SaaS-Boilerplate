@@ -4,6 +4,7 @@ using Application.Multitenancy;
 using Domain.MasterTenant;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Shared.Multitenancy;
 
 namespace Infrastructure.Multitenancy
@@ -46,9 +47,13 @@ namespace Infrastructure.Multitenancy
                     tenantProvider.SetTenant(tenant);
                     context.Items["Tenant"] = tenant;
                 }
-                catch
+                catch(Exception ex)
                 {
-                    // optional: handle missing tenant (return 403/404/etc.)
+                    var logger = context.RequestServices.GetRequiredService<ILogger<TenantResolutionMiddleware>>();
+                    logger.LogWarning(ex, "Tenant resolution failed for tenantId: {TenantId}", tenantId);
+                    context.Response.StatusCode = StatusCodes.Status403Forbidden;
+                    await context.Response.WriteAsync("Invalid tenant.");
+                    return;
                 }
             }
 

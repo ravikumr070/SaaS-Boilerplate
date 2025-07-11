@@ -23,13 +23,17 @@ namespace Infrastructure.Persistence.Context.Factories
     {
         public ApplicationDbContext CreateDbContext(string[] args)
         {
-            var connectionString = "Data Source=WCL-INDIA-WIN11\\SQLEXPRESS;Initial Catalog=RavTest;Integrated Security=True;TrustServerCertificate=True;";
-
+            var configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("Configurations/database.json", optional: false, reloadOnChange: true)
+                .Build();
+            var dbSettings = new DatabaseSettings();
+            configuration.GetSection("DatabaseSettings").Bind(dbSettings);
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
-            optionsBuilder.UseSqlServer(connectionString);
+            optionsBuilder.UseSqlServer(dbSettings.ConnectionString);
 
             return new ApplicationDbContext(
-                new DesignTimeTenantProvider(connectionString),
+                new DesignTimeTenantProvider(dbSettings.ConnectionString),
                 optionsBuilder.Options,
                 new DesignTimeCurrentUser(),
                 new DesignTimeSerializerService(),
